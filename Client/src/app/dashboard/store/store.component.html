@@ -1,0 +1,53 @@
+
+<nb-card>
+  <nb-card-header style="text-align:center; font-family:verdana;">My Store</nb-card-header>
+  <nb-card-body>
+
+      <div id="divaya" *ngIf="divaya">
+          Name: <input #tName required/>
+          Price: <input #tPrice required/>
+          Seller: <input #tSeller required/>
+          <button class = "Button" (click) = "sheelDivaya()" (click) = "createProduct({name: tName.value, price: tPrice.value, 
+            SellerName: tSeller.value})"style="color:cornflowerblue"><i class="fa fa-check" style="font-size:24px"></i></button>
+          <button class = "Button" (click) = "sheelDivaya()"style="color:cornflowerblue"><i class="fa fa-close" style="font-size:24px"></i></button>
+    
+        </div>
+    
+        
+        
+        <div id="divaya2" *ngIf="divaya2">
+          Name: <input #tName [(ngModel)]="oldName" required/>
+          Price: <input #tPrice [(ngModel)]="oldPrice" required/>
+          Seller: <input #tSeller [(ngModel)]="oldSeller" required/>
+          <button class = "Button" (click) = "sheelDivaya2()" (click) = "updateProduct({name: tName.value, price: tPrice.value, SellerName: tSeller.value})"style="background-color:powderblue;"><i class="fa fa-check" style="font-size:24px"></i></button>
+          <button class = "Button" (click) = "sheelDivaya2()" style="color:cornflowerblue"><i class="fa fa-close" style="font-size:24px"></i></button>
+        </div>
+    
+        <span id="add" ><button class = "Button" (click) = "showDivaya()"><i class="fa fa-plus-square-o" style="font-size:24px; color:cornflowerblue"></i></button></span>
+    
+
+
+  <table class="table table-hover table-bordered table-striped">
+    <tr>
+      <th class="text-center" style="color:rgba(12, 138, 160, 0.651);">Name</th>
+      <th class="text-center"style="color:rgba(12, 138, 160, 0.651);">Price</th>
+      <th class="text-center"style="color:rgba(12, 138, 160, 0.651);">CreatedAt</th>
+      <th class="text-center"style="color:rgba(12, 138, 160, 0.651);">UpdatedAt</th>
+      <th class="text-center"style="color:rgba(12, 138, 160, 0.651);">Seller</th>
+
+    </tr>
+    <tr *ngFor="let product of tableData">
+      <td class="text-center">{{product.name}}</td>
+      <td class="text-center">{{product.price|currency}}</td>
+      <td class="text-center">{{product.createdAt| date}}</td>
+      <td class="text-center">{{product.updatedAt| date}}</td>
+      <td class="text-center">{{product.SellerName}}</td>
+
+      <button class="Button" (click) = "showDivaya2(product)" style="color:cornflowerblue"> <i class="fa fa-pencil" style="font-size:24px"></i>></button>
+      <button class="Button" (click) = "deleteProduct(product)"style="color:cornflowerblue"><i class="fa fa-trash-o" style="font-size:24px" ></i></button>
+    
+    </tr>
+  </table>
+  </nb-card-body>
+  </nb-card>
+  
